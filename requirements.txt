@@ -1,0 +1,9 @@
+sklearn
+joblib
+pandas
+flask
+turbo_flask
+nltk
+transformers
+sentence_transformers
+keybert
