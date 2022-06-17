@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  {{ turbo() }}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static',filename='./img/tm-logo.svg') }}">
+  <title>Tomorrow.nl</title>
+  <link rel="stylesheet" type="text/css"
+    href="{{ url_for('static',filename='./css/bootstrap-css/bootstrap.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='./css/blog.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='./css/style.css') }}">
+</head>
+
+<body>
+  <div class="container">
+    <header class="blog-header py-3">
+      <div class="row d-flex justify-content-center">
+          <a class="blog-header-logo text-dark" href="#">TOMORROW.nl</a>
+      </div>
+    </header>
+
+    <div class="nav-scroller py-1 mb-2">
+      <nav class="nav d-flex justify-content-center">
+        <a class="p-2 text-muted" data-toggle="modal" data-target="#aboutModal">About</a>
+      </nav>
+    </div>
+
+    <main role="main" class="container">
+      <div id="title">Test and analyse how articles are matched against video advertisements.
+        <br />Put your article text below and hit 'load'.<br/> <hr>
+        <div class="row">
+          <div class="col-md-8 blog-main">
+            <div class="blog-post">
+              <p class="blog-post-meta">
+                <p class="description" id="articleText">
+                  <form name="form" , method="POST" , style="text-align: left;">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="sntmnt_checkbox">
+                    Sentiment Analysis (might take some time) <br />
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="kwrd_checkbox">Keyword analysis (might take some time)<br/>
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="smlrty_checkbox">Similarity analysis (might take some time)<br/>
+                    <textarea id="inputTxt" name="input" class="form-control" rows="12" cols="50" required="required">A charging station, also called an EV charger, electric vehicle supply equipment (EVSE) or simply charger is a piece of equipment that supplies electrical power for charging plug-in electric vehicles (including hybrids, neighborhood electric vehicles, trucks, buses, and others)
+                  </textarea>
+
+                    <div id="the-count"
+                      style="float: right; padding: 0.1rem 0 0 0; font-size: 0.875rem;">
+                      <span id="current">0</span>
+                      <span> characters</span>
+                      <!-- <span id="maximum">/ 512</span> -->
+                    </div>
+
+                    <button value="Submit" class="btn btn-primary">Load</button>
+                  </form>
+                </p>
+            </div><!-- /.blog-post -->
+
+          </div><!-- /.blog-main -->
+
+          <aside class="col-md-4 blog-sidebar">
+            <div class="p-3 mb-3 bg-light rounded">
+              <h4 class="font-italic">Advertisment</h4>
+              <!-- Button trigger modal -->
+              <turbo-frame id="modalButton"></turbo-frame>
+              <div id="ad">
+                <div id="adTxt">
+                </div>
+                <turbo-frame id="advert"></turbo-frame>
+              </div>
+            </div>
+
+            <div class="p-3">
+              <!-- <h4 class="font-italic">Elsewhere</h4>
+              <ol class="list-unstyled">
+                <li><a href="#">GitHub</a></li>
+              </ol> -->
+            </div>
+          </aside><!-- /.blog-sidebar -->
+
+        </div><!-- /.row -->
+
+    </main><!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>Tomorrow.nl, Team Contextual - Innovationlab GroupM/Greenhouse</p>
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+    <!-- Analysis modal -->
+    <div class="modal fade" id="analysisModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-xl" role="document" style="max-width: 1140px;">
+        <div class="modal-content">
+          <div class="modal-header">
+            <!-- <h5 class="modal-title" id="exampleModalLongTitle">Analysis summary</h5> -->
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h3>Sentiment analysis:</h3>
+            <turbo-frame id="sentiment"><code>please provide an article and hit 'load'</code></turbo-frame>
+            <br /><br />
+
+            <h3>Keyword analysis:</h3>
+            <turbo-frame id="keywords"><code>please provide an article and hit 'load'</code></turbo-frame>
+            <br /><br />
+
+            <h3>Similarity analysis:</h3>
+            <turbo-frame id="similarity"><code>please provide an article and hit 'load'</code></turbo-frame>
+            <br /><br />
+
+            <div class="container">
+              <div class="row">
+                <div class="col-sm">
+                  <h3>Cleaned text:</h3>
+                  <turbo-frame id="cleaned_article_text"><code>please provide an article and hit 'load'</code>
+                  </turbo-frame>
+                </div>
+                <div class="col-sm">
+                  <h3>Detected labels in video ad:</h3>
+                  <turbo-frame id="videoLabels"><code>please provide an article and hit 'load'</code></turbo-frame>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save to CSV</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- About modal -->
+    <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">About</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h3>Proof of Concept</h3> <br/>
+            The proof of concept shows an advertising solution for the trend were the consumer cares more and more about their online privacy and shows how
+            to embark into a cookieless world by using contextual a.i. to match pre-analysed video advertisements against user-provided articles 
+            whereby the best-matching ad is being placed without using any personal data. <br/><br/>
+            The PoC allows the user to provide any kind of article therefore the system results the best matching video-ad. Based on the given options 
+            the result gives an analysis on the most important keywords from the article, the sentiment of the article and the ad and a percentage on how similar the two 
+            of them are. <br/>
+            Please note that the results may differ depending on the length of the given article. A shorter version might provide a different ad than the longer version. 
+            <div class="modal-footer">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+      </script>
+      <script>
+        window.jQuery || document.write('<script src="./js/assets/jquery-slim.min.js"><\/script>')
+
+        const checkbox = document.getElementById('flexCheckDefault');
+        const txt = document.getElementById('inputTxt');
+        const box = document.getElementById('the-count');
+
+        $('textarea').keyup(function () {
+
+          var characterCount = $(this).val().length,
+            current = $('#current'),
+            maximum = $('#maximum'),
+            theCount = $('#the-count');
+
+          current.text(characterCount);
+        });
+      </script>
+      <script src="{{ url_for('static',filename='/js/assets/popper.min.js') }}"> </script>
+      <script src="{{ url_for('static',filename='/js/assets/bootstrap.min.js') }}"> </script>
+      <script src="{{ url_for('static',filename='/js/assets/holder.min.js') }}"> </script>
+</body>
+
+</html>

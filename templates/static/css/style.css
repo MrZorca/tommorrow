@@ -1,0 +1,46 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700,500|Cinzel+Decorative:700);
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  max-width: max-content;
+  margin: auto;
+  position: relative;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+  color: black;
+}
+
+
+/* hr {
+  border-top: 2px solid blueviolet;
+} */
+
+.headerBg {
+  background-image: url("");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.blog-header-logo {
+  font-family: "Cinzel Decorative", Helvetica;
+}
+
+/* h3 {
+  font-family: "Montserrat", Helvetica;
+} */
+
+.text-dark {
+  color:blueviolet
+}
+
