@@ -1,4 +1,4 @@
-# tommorrow
+# tomorrow
 This demonstration website of the proof of concept based on a flask-web application is made by Dries de Roover, Michael Osuntuyi and Marya Dukmak.
 This is a short explanation on how the proof of concept works. Make sure you have python 3 succesfully installed.
 1. Firstly, install the requirements.text via pip/python3 to install all the dependencies;
