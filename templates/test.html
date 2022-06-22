@@ -19,34 +19,38 @@
   <div class="container">
     <header class="blog-header py-3">
       <div class="row d-flex justify-content-center">
-          <a class="blog-header-logo text-dark" href="#">TOMORROW.nl</a>
+        <a class="blog-header-logo text-dark" href="#">TOMORROW.nl</a>
       </div>
     </header>
 
     <div class="nav-scroller py-1 mb-2">
       <nav class="nav d-flex justify-content-center">
+        <a class="p-2 text-muted" data-toggle="modal" data-target="#articlesModal">Test Articles</a>
         <a class="p-2 text-muted" data-toggle="modal" data-target="#aboutModal">About</a>
       </nav>
     </div>
 
     <main role="main" class="container">
       <div id="title">Test and analyse how articles are matched against video advertisements.
-        <br />Put your article text below and hit 'load'.<br/> <hr>
+        <br />Put your article text below and hit 'load'.<br />
+        <hr>
         <div class="row">
           <div class="col-md-8 blog-main">
             <div class="blog-post">
               <p class="blog-post-meta">
                 <p class="description" id="articleText">
                   <form name="form" , method="POST" , style="text-align: left;">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="sntmnt_checkbox">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+                      name="sntmnt_checkbox">
                     Sentiment Analysis (might take some time) <br />
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="kwrd_checkbox">Keyword analysis<br/>
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="smlrty_checkbox">Similarity analysis<br/>
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+                      name="kwrd_checkbox">Keyword analysis<br />
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+                      name="smlrty_checkbox">Similarity analysis<br />
                     <textarea id="inputTxt" name="input" class="form-control" rows="12" cols="50" required="required">A charging station, also called an EV charger, electric vehicle supply equipment (EVSE) or simply charger is a piece of equipment that supplies electrical power for charging plug-in electric vehicles (including hybrids, neighborhood electric vehicles, trucks, buses, and others)
                   </textarea>
 
-                    <div id="the-count"
-                      style="float: right; padding: 0.1rem 0 0 0; font-size: 0.875rem;">
+                    <div id="the-count" style="float: right; padding: 0.1rem 0 0 0; font-size: 0.875rem;">
                       <span id="current">0</span>
                       <span> characters</span>
                       <!-- <span id="maximum">/ 512</span> -->
@@ -72,10 +76,10 @@
             </div>
 
             <div class="p-3">
-              <!-- <h4 class="font-italic">Elsewhere</h4>
+              <h4 class="font-italic">Elsewhere</h4>
               <ol class="list-unstyled">
-                <li><a href="#">GitHub</a></li>
-              </ol> -->
+                <li><a href="https://github.com/MrZorca/tomorrow-m ''">GitHub</a></li>
+              </ol>
             </div>
           </aside><!-- /.blog-sidebar -->
 
@@ -130,7 +134,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-<!--             <button type="button" class="btn btn-primary">Save to CSV</button> This function has yet to be implemented-->
+            <!--             <button type="button" class="btn btn-primary">Save to CSV</button> This function has yet to be implemented-->
           </div>
         </div>
       </div>
@@ -148,43 +152,112 @@
             </button>
           </div>
           <div class="modal-body">
-            <h3>Proof of Concept</h3> <br/>
-            The proof of concept shows an advertising solution for the trend were the consumer cares more and more about their online privacy and shows how
-            to embark into a cookieless world by using contextual a.i. to match pre-analysed video advertisements against user-provided articles 
-            whereby the best-matching ad is being placed without using any personal data. <br/><br/>
-            The PoC allows the user to provide any kind of article therefore the system results the best matching video-ad. Based on the given options 
-            the result gives an analysis on the most important keywords from the article, the sentiment of the article and the ad and a percentage on how similar the two 
-            of them are. <br/>
-            Please note that the results may differ depending on the length of the given article. A shorter version might provide a different ad than the longer version. 
+            <h3>Proof of Concept</h3> <br />
+            The proof of concept shows an advertising solution for the trend were the consumer cares more and more about
+            their online privacy and shows how
+            to embark into a cookieless world by using contextual a.i. to match pre-analysed video advertisements
+            against user-provided articles
+            whereby the best-matching ad is being placed without using any personal data. <br /><br />
+            The PoC allows the user to provide any kind of article therefore the system results the best matching
+            video-ad. Based on the given options
+            the result gives an analysis on the most important keywords from the article, the sentiment of the article
+            and the ad and a percentage on how similar the two
+            of them are. <br />
+            Please note that the results may differ depending on the length of the given article. A shorter version
+            might provide a different ad than the longer version.
             <div class="modal-footer">
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-      </script>
-      <script>
-        window.jQuery || document.write('<script src="./js/assets/jquery-slim.min.js"><\/script>')
+    <!-- example text modal -->
+    <div class="modal fade" id="articlesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Example Articles</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h3>Lorem Ipsum</h3> <br />
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fermentum, purus bibendum venenatis
+              dignissim,
+              elit nunc pellentesque leo, ut elementum neque ligula eu ante. Etiam fermentum iaculis mauris et iaculis.
+              Phasellus egestas diam libero, ut tincidunt enim consequat at. Phasellus blandit facilisis consectetur.
+              Suspendisse sit amet mi tristique, sollicitudin ante eget, luctus dui. Nulla facilisi. Orci varius natoque
+              penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed mattis eros arcu, id imperdiet nisl
+              gravida cursus. Pellentesque blandit lacinia odio, nec condimentum est maximus ut. Pellentesque vehicula
+              sem
+              quam, non viverra arcu faucibus dictum.<br />
 
-        const checkbox = document.getElementById('flexCheckDefault');
-        const txt = document.getElementById('inputTxt');
-        const box = document.getElementById('the-count');
+              Suspendisse ullamcorper nisi vel eros mollis fermentum. In vel magna pulvinar, dapibus neque non, lobortis
+              elit. Donec at lacus in erat commodo lacinia. Etiam molestie odio nisi, vel cursus nisi venenatis vel.
+              Donec
+              ut varius erat. Donec sit amet consequat arcu. Maecenas sit amet dolor in massa rutrum ultricies. Nulla id
+              pulvinar lacus, quis convallis mi. Sed consequat turpis ut nisl vehicula, at lobortis libero pharetra.
+              Quisque ut posuere sem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac
+              turpis
+              egestas. Praesent eu vehicula turpis. Sed libero sem, sodales eu cursus in, pulvinar nec risus. Vestibulum
+              ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Class aptent taciti sociosqu
+              ad
+              litora torquent per conubia nostra, per inceptos himenaeos.</p>
+            <br/>
+            <h3>Milka</h3> <br />
+            <p>Biscuits are also often composed of a number of different phases each with a different fat system. At the
+              very basic level a plain biscuit contains dough fat. Rather than being fat-continuous, the structure of a
+              biscuit is such that these fats are dispersed throughout the product.
+            </p>
+            <br/>
+            <h3>Coffee</h3> <br />
+            <p>Coffee is an intricate mixture of more than a thousand chemicals. [1] The cup of coffee you order from a
+              coffee shop is likely different from the coffee you brew at home. What defines a cup is the type of coffee
+              bean used, how it is roasted, the amount of grind, and how it is brewed. Human response to coffee or
+              caffeine can also vary substantially across individuals
+            </p>
+            <br/>
+            <h3>Water</h3> <br />
+            <p> Plain water is the best hydrating beverage for most people, but sports and energy drinks are advertised
+              to appeal to those who exercise or need a boost of energy to get through the day. Though sometimes
+              confused with sports beverages, energy drinks are a different product entirely. They are marketed to
+              increase alertness and energy levels, containing significant amounts of caffeine and as much or more sugar
+              as in soda.
+            </p>
 
-        $('textarea').keyup(function () {
+            <div class="modal-footer">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-          var characterCount = $(this).val().length,
-            current = $('#current'),
-            maximum = $('#maximum'),
-            theCount = $('#the-count');
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script>
+      window.jQuery || document.write('<script src="./js/assets/jquery-slim.min.js"><\/script>')
 
-          current.text(characterCount);
-        });
-      </script>
-      <script src="{{ url_for('static',filename='/js/assets/popper.min.js') }}"> </script>
-      <script src="{{ url_for('static',filename='/js/assets/bootstrap.min.js') }}"> </script>
-      <script src="{{ url_for('static',filename='/js/assets/holder.min.js') }}"> </script>
+      const checkbox = document.getElementById('flexCheckDefault');
+      const txt = document.getElementById('inputTxt');
+      const box = document.getElementById('the-count');
+
+      $('textarea').keyup(function () {
+
+        var characterCount = $(this).val().length,
+          current = $('#current'),
+          maximum = $('#maximum'),
+          theCount = $('#the-count');
+
+        current.text(characterCount);
+      });
+    </script>
+    <script src="{{ url_for('static',filename='/js/assets/popper.min.js') }}"> </script>
+    <script src="{{ url_for('static',filename='/js/assets/bootstrap.min.js') }}"> </script>
+    <script src="{{ url_for('static',filename='/js/assets/holder.min.js') }}"> </script>
 </body>
 
 </html>
