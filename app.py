@@ -41,8 +41,8 @@ def remove_stopwords(list_of_checked_words):
 
 #Compare the sentiment between the video-ad data and the given article/text
 def sentiment_analysis(text, modelname="nlptown/bert-base-multilingual-uncased-sentiment"):
-    text_labels = {'1 star': 'Very negative', '2 stars': 'Negative', '3 stars': 'neutral',
-                   '4 stars': 'Positive', '5 stars': 'Very positive'}
+    text_labels = {'1 star': 'very negative', '2 stars': 'negative', '3 stars': 'neutral',
+                   '4 stars': 'positive', '5 stars': 'very positive'}
     sentiment_analyse = pipeline(model=modelname)
     sentiment_article = sentiment_analyse(text[0])[0]
     sentiment_ad = sentiment_analyse(text[1])[0]
@@ -131,6 +131,7 @@ def main():
             s_analysis = sentiment_analysis(text_vid)
             output_analysis = s_analysis
         if request.form.getlist("kwrd_checkbox"):
+            #mmr and diversity are numbers to tweak the returned result. n_results is for how many results you want.
             keyword_analysis = keywords_extracting(text_vid, mmr=0.50, diversity=0.50, n_results=10)
             output_keywords = keyword_analysis
         if request.form.getlist("smlrty_checkbox"):
@@ -142,6 +143,12 @@ def main():
 
         p = prediction.replace("watch?v=", "embed/")
         output_ad = '<iframe width="420" height="315", src =' + p + '></iframe>'
+
+        if 'Article sentiment: <strong>negative</strong>' in output_analysis:
+            output_ad = '<p>Please note that the article sentiment is negative. Do you still want this ad to appear?</p></br><iframe width="420" height="315", src =' + p + '></iframe>'
+
+        if 'Article sentiment: <strong>very negative</strong>' in output_analysis:
+            output_ad = '<p><strong>Brand safety response:</strong> No ad has been placed due to the article having a <strong>very negative</strong> sentiment. Please review the analysis for more information.</p>'
         
         #The outputs placed in turboframes, updated on the webpage
         return turbo.stream([
